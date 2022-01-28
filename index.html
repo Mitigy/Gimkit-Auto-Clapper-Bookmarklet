@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Moocraft's Space: Gimkit Auto Clapper</title>
+
+    <meta charset="UTF-8">
+</head>
+
+<body style="text-align: center;">
+    <h2>Gimkit Auto Clapper</h2>
+    <h3>I have made a Gimkit Auto Clapper and turned it into a bookmarklet. For help with installing a bookmarklet just click <a href="https://mreidsma.github.io/bookmarklets/installing.html">here</a>.</h3>
+    <a href="javascript:(function()%7Bvar%20timer%2Cclapping%3D!0%2Cclapper%3Ddocument.querySelector(%22div.animated.pulse.infinite%22)%3Bfunction%20toggleClapingState()%7Bclapping%3F(btn.innerHTML%3D%22Start%20Clapping%22%2CclearInterval(timer))%3Aclapping%7C%7C(btn.innerHTML%3D%22Stop%20Clapping%22%2Ctimer%3DsetInterval(function()%7Bclapper.click()%7D%2C1))%2Cclapping%3D!clapping%7Dvar%20btn%3Ddocument.createElement(%22BUTTON%22)%3Bbtn.innerHTML%3D%22Stop%20Clapping%22%2Cbtn.addEventListener(%22click%22%2CtoggleClapingState)%2Cbtn.style%3D%22position%3A%20absolute%3Btop%3A%200%3Bz-index%3A%201000%3B%22%2Cdocument.body.appendChild(btn)%2Ctimer%3DsetInterval(function()%7Bclapper.click()%7D%2C1)%7D)()">Gimkit Auto Clapper</a>
+    <h3>The code:</h3>
+    <textarea style="height: 30vh; width: 30vw;">var clapping = true;
+    var timer;
+    var clapper = document.querySelector("div.animated.pulse.infinite");
+
+    function toggleClapingState() {
+        if (clapping) {
+            btn.innerHTML = "Start Clapping";
+            clearInterval(timer);
+        }else if (!clapping) {
+            btn.innerHTML = "Stop Clapping";
+            timer = setInterval(function() {clapper.click()}, 1)
+        }
+
+        clapping = !clapping;
+    }
+
+    var btn = document.createElement("BUTTON");
+    btn.innerHTML = "Stop Clapping";
+    btn.addEventListener("click", toggleClapingState);
+    //btn.id = "ToggleClap"; //For Debug Use
+    btn.style = "position: absolute;top: 0;z-index: 1000;"
+    document.body.appendChild(btn);
+    timer = setInterval(function() {clapper.click()}, 1)
+    </textarea>
+</body>
+
+</html>
